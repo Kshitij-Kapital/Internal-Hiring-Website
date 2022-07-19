@@ -1,10 +1,16 @@
+import './App.css'
 import React from 'react';
-import Navbar from './components/Navbar';
+// import { Route } from 'react-router-dom';
+import Login from './components/Login/Login';
+import Register from './components/Register/Register';
+import Dashboard from './components/Dashboard/Dashboard';
 
 const App = () => {
     return (
         <>
-        <Navbar />
+        {/*<Login />*/}
+        <Register />
+        {/*<Dashboard />*/}
         </>
     )
 }
