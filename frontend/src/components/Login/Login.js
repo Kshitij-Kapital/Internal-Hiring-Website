@@ -3,15 +3,15 @@ import "./Login.css";
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-    
+
     const navigate = useNavigate();
-    const [user, setUser ] = useState({
+    const [user, setUser] = useState({
         email: "",
         password: ""
     })
 
     const handleChange = e => {
-        const {name, value} = e.target
+        const { name, value } = e.target
         setUser({
             ...user,
             [name]: value
@@ -44,15 +44,26 @@ const Login = () => {
         }
         // navigate.push('/register');
     }
-    
+
     return (
-        <div method= "POST" className='Login'>
-        <h1>Login</h1>
-        <input type="text" name="email" value={user.email} onChange={handleChange} placeholder='Enter your Email'></input>
-        <input type="Password" name="password" value={user.password} onChange={handleChange} placeholder='Enter your Password'></input>
-        <div className='Button' onClick={login}>Login</div>
-        <div>or</div>
-        <div className='Button' onClick={() => navigate('/register') }>Register</div>
+        <div method="POST" className="Login">
+            <h1>Login</h1>
+            <form method="post">
+                <div class="txt_field">
+                    <input type="text" name="email" value={user.email} onChange={handleChange}></input>
+                    <span></span>
+                    <label>Email</label>
+                </div>
+                <div class="txt_field">
+                    <input type="Password" name="password" value={user.password} onChange={handleChange}></input>
+                    <span></span>
+                    <label>Password</label>
+                </div>
+                <div className="pass">Forgot Password?</div>
+                <div className="Button" onClick={login}>Login</div>
+                <div>or</div>
+                <div className='Button' onClick={() => navigate('/register')}>Register</div>
+            </form>
         </div>
     )
 }
