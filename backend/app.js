@@ -19,6 +19,7 @@ app.use(express.json());
 //We link the router file to make our route easy
 app.use(require('./router/auth'));
 
+app.use('/admin', require('./router/admin.route'));
 
 
 

@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
+const { roles } = require('../utils/constants');
 
 const userSchema = new mongoose.Schema({
     firstname: {
@@ -23,6 +24,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    role: {
+        type: String,
+        enum: [roles.admin, roles.employer, roles.candidate],
+        default: roles.candidate
+    },
     tokens: [
         {
             token: {
@@ -39,6 +45,9 @@ userSchema.pre('save', async function (next) {
     if (this.isModified('password')) {
         this.password = bcrypt.hashSync(this.password, 12);
         this.cpassword = bcrypt.hashSync(this.cpassword, 12);
+        if(this.email === process.env.ADMIN_EMAIL.toLowerCase()) {
+            this.role = roles.admin
+        }
     }
     next();
 });
