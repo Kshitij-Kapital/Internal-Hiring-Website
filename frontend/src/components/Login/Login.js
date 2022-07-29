@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import "./Login.css";
 import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({ setLoginUser }) => {
 
     const navigate = useNavigate();
     const [user, setUser] = useState({
@@ -37,10 +37,10 @@ const Login = () => {
 
         if (res.status === 422 || !data) {
             window.alert("Invalid Registration");
-            console.log("Invalid Registration");
         } else {
             window.alert("Login Successfull");
-            console.log("login Successfull");
+            setLoginUser(res.data.user);
+            navigate("/");
         }
         // navigate.push('/register');
     }

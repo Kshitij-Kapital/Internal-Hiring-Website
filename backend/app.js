@@ -19,6 +19,8 @@ app.use(express.json());
 //We link the router file to make our route easy
 app.use(require('./router/auth'));
 
+//created for admin routing
+
 app.use('/admin', require('./router/admin.route'));
 
 
@@ -31,7 +33,7 @@ const middleware = (req, res, next) => {
 }
 
 app.get('/', (req, res) => {
-    res.send(`Hello World`);
+    res.send(`Hello from Candidate`);
 });
 
 app.get('/register', middleware, (req, res) => {

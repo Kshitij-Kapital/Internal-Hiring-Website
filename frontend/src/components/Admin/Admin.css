@@ -1,4 +1,4 @@
-.Dashboard {
+.Admin {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,7 +11,7 @@
     position: relative
 }
 
-.Dashboard > .Button {
+.Admin > .Button {
     background: #c89c5c;
     border: 1px solid #000;
     color: #fff;
